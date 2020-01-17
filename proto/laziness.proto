@@ -1,0 +1,22 @@
+//protoc -I. --go_out=plugins=grpc:. *.proto
+syntax = "proto3";
+
+service LazinessService {
+    rpc CreateLaziness(Laziness) returns (Response) {}
+    rpc GetById(Index) returns (Response) {}
+}
+
+message Laziness {
+    string id = 1;
+    string description = 2;
+    int32 power = 3;
+}
+
+message Index {
+    string id = 1;
+}
+
+message Response {
+    bool created = 1;
+    Laziness laziness = 2;
+}
